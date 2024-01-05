@@ -1,0 +1,61 @@
+run:
+  timeout: 5m
+  skip-dirs:
+    - build
+    - config
+    - pkg/clientset
+  skip-files:
+    - "^zz_.*"
+    - ".*_test\\.go$"
+  allow-parallel-runners: true
+
+linters:
+  disable-all: true
+  enable:
+    - grouper
+    - containedctx
+    - govet
+    - staticcheck
+    - unused
+    - gosimple
+    - ineffassign
+    - typecheck
+    - unconvert
+    - goconst
+    - goimports
+    - misspell
+    - prealloc
+    - revive
+    - exportloopref
+    - gofmt
+    - noctx
+    - gocritic
+    - gocognit
+    - gosec
+    - whitespace
+    - tagliatelle
+    - exhaustive
+    - revive
+    - unconvert
+
+linters-settings:
+  govet:
+    enable-all: true
+    disable:
+      - fieldalignment
+  cyclop:
+    skip-tests: true
+  tagliatelle:
+    case:
+      use-field-name: false
+      rules:
+        json: camel
+        yaml: camel
+  exhaustive:
+    default-signifies-exhaustive: true
+  nolintlint:
+    allow-leading-space: true
+    allow-unused: false
+    require-specific: true
+  goimports:
+    local-prefixes: github.com/pastequo/picrosstouch.solver
